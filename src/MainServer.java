@@ -1,7 +1,4 @@
-package Server;
-
 import java.io.*;
-import java.io.OutputStream;
 import java.net.*;
 
 public class MainServer {
@@ -18,12 +15,13 @@ public class MainServer {
 
             dSocket.receive(dpi);
             System.out.println("Recieved effectivly");
+            InetAddress clientAddress = dpi.getAddress();
+            int clientPort = dpi.getPort();
 
-
+            DatagramPacket dpo = new DatagramPacket(bufferIn, bufferIn.length, clientAddress, clientPort);
             /*while(true){
 
-                InetAddress clientAddress = inPacket.getAddress();
-                int clientPort = inPacket.getPort();
+
 
                 String messageIn = new String(inPacket.getData(), 0, inPacket.getLength());
                 System.out.println("I'm the Client " + clientAddress + ":" + clientPort + "> " + messageIn);
