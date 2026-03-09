@@ -22,7 +22,10 @@ public class MainClient {
 
                 byte[] buffer = new byte[256];
 
-                DatagramPacket inPacket = new DatagramPacket(buffer, buffer.length);
+                DatagramPacket dpi = new DatagramPacket(buffer, buffer.length);
+
+                dSocket.receive(dpi);
+                System.out.println("Recieved effectivly: " + dpi);
 
             } catch (UnknownHostException e) {
                 throw new RuntimeException(e);

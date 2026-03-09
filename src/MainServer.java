@@ -19,6 +19,9 @@ public class MainServer {
             int clientPort = dpi.getPort();
 
             DatagramPacket dpo = new DatagramPacket(bufferIn, bufferIn.length, clientAddress, clientPort);
+            dSocket.send(dpo);
+
+
             /*while(true){
 
 
