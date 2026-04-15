@@ -6,26 +6,27 @@ public class MainClient {
 
             System.out.println("Client!!");
             try {
-                int port = 12345;
-                InetAddress serverAddress = InetAddress.getLocalHost();
 
-                System.out.println("Indirizzo del server trovato!");
-                DatagramSocket dSocket = new DatagramSocket();
+                    int port = 12345;
+                    InetAddress serverAddress = InetAddress.getLocalHost();
 
-                String message = "Ciao Server!";
-                DatagramPacket dpo = new DatagramPacket(message.getBytes(),
-                        message.length(),
-                        serverAddress,
-                        port);
+                    System.out.println("Indirizzo del server trovato!");
+                    DatagramSocket dSocket = new DatagramSocket();
 
-                dSocket.send(dpo);
+                    String message = "Ciao Server!";
+                    DatagramPacket dpo = new DatagramPacket(message.getBytes(),
+                            message.length(),
+                            serverAddress,
+                            port);
 
-                byte[] buffer = new byte[256];
+                    dSocket.send(dpo);
 
-                DatagramPacket dpi = new DatagramPacket(buffer, buffer.length);
+                    byte[] buffer = new byte[256];
 
-                dSocket.receive(dpi);
-                System.out.println("Recieved effectivly: " + dpi);
+                    DatagramPacket dpi = new DatagramPacket(buffer, buffer.length);
+
+                    dSocket.receive(dpi);
+                    System.out.println("Recieved effectivly: " + dpi);
 
             } catch (UnknownHostException e) {
                 throw new RuntimeException(e);
